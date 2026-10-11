@@ -1,0 +1,6 @@
+{
+  "name": "Jacobs Elétrica e Hidráulica",
+  "description": "Biosite oficial da Jacobs Elétrica e Hidráulica na Tijuca, RJ. Materiais elétricos, hidráulicos, WhatsApp, localização e Wi-Fi da loja.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

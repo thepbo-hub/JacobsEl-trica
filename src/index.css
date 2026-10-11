@@ -1,0 +1,444 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Barlow Semi Condensed', 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #040913;
+    color: #f1f5f9;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-industrial {
+    font-family: var(--font-heading);
+    letter-spacing: 0.02em;
+  }
+}
+
+/* 3D Embossed Glossy Buttons System with Jump Hover Animation */
+.glossy-3d-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, filter 0.25s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Efeito de Salto ao Passar o Mouse (Jump / Bounce Físico 3D) */
+.glossy-3d-btn:hover {
+  transform: translateY(-8px) scale(1.025);
+  filter: brightness(1.12);
+}
+
+.glossy-3d-btn:active {
+  transform: translateY(3px) scale(0.98);
+  transition-duration: 0.1s;
+}
+
+/* Metallic top rim highlight */
+.glossy-3d-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.12) 60%, rgba(255, 255, 255, 0.0) 100%);
+  border-radius: 0.95rem 0.95rem 0 0;
+  pointer-events: none;
+}
+
+/* Sweep reflection on interaction */
+.glossy-3d-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -120%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 30%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0.15) 70%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.glossy-3d-btn:hover::after,
+.glossy-3d-btn:active::after {
+  opacity: 1;
+  animation: sweep 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes sweep {
+  0% { left: -120%; }
+  100% { left: 160%; }
+}
+
+/* 3D Blue Button (Primary Dark Navy) */
+.btn-3d-navy {
+  background: linear-gradient(180deg, #143059 0%, #0c203f 50%, #07152b 100%);
+  border: 1px solid #285496;
+  border-bottom: 1px solid #10233f;
+  box-shadow: 
+    0 5px 0 #040c18,
+    0 10px 18px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+}
+.btn-3d-navy:hover {
+  filter: brightness(1.12);
+  box-shadow: 
+    0 12px 0 #040c18,
+    0 22px 30px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(40, 84, 150, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.7);
+}
+.btn-3d-navy:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 1px 0 #040c18,
+    0 4px 8px rgba(0, 0, 0, 0.7),
+    inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* 3D Red Button (Accent) */
+.btn-3d-red {
+  background: linear-gradient(180deg, #d32020 0%, #b31212 50%, #870909 100%);
+  border: 1px solid #ff4d4d;
+  border-bottom: 1px solid #6b0707;
+  box-shadow: 
+    0 5px 0 #4f0303,
+    0 10px 20px rgba(179, 18, 18, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4);
+}
+.btn-3d-red:hover {
+  filter: brightness(1.12);
+  box-shadow: 
+    0 12px 0 #4f0303,
+    0 22px 32px rgba(211, 32, 32, 0.6),
+    0 0 20px rgba(239, 68, 68, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+.btn-3d-red:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 1px 0 #4f0303,
+    0 4px 8px rgba(0, 0, 0, 0.7),
+    inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* 3D Green Button (WhatsApp & Open badge) */
+.btn-3d-green {
+  background: linear-gradient(180deg, #25d366 0%, #1da851 50%, #127a38 100%);
+  border: 1px solid #57e88e;
+  border-bottom: 1px solid #0d5c2a;
+  box-shadow: 
+    0 5px 0 #0a3d1c,
+    0 10px 20px rgba(37, 211, 102, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+.btn-3d-green:hover {
+  filter: brightness(1.12);
+  box-shadow: 
+    0 12px 0 #0a3d1c,
+    0 22px 32px rgba(37, 211, 102, 0.55),
+    0 0 20px rgba(37, 211, 102, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+.btn-3d-green:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 1px 0 #0a3d1c,
+    0 4px 8px rgba(0, 0, 0, 0.6),
+    inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* 3D Instagram Button */
+.btn-3d-instagram {
+  background: linear-gradient(180deg, #ca2e7b 0%, #a21c5f 50%, #751144 100%);
+  border: 1px solid #f0549f;
+  border-bottom: 1px solid #520b2f;
+  box-shadow: 
+    0 5px 0 #3b0621,
+    0 10px 20px rgba(202, 46, 123, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4);
+}
+.btn-3d-instagram:hover {
+  filter: brightness(1.12);
+  box-shadow: 
+    0 12px 0 #3b0621,
+    0 22px 32px rgba(202, 46, 123, 0.55),
+    0 0 20px rgba(202, 46, 123, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+.btn-3d-instagram:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 1px 0 #3b0621,
+    0 4px 8px rgba(0, 0, 0, 0.7),
+    inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* 3D Google Review Button */
+.btn-3d-google {
+  background: linear-gradient(180deg, #1f2937 0%, #111827 50%, #0b0f17 100%);
+  border: 1px solid #374151;
+  border-bottom: 1px solid #030712;
+  box-shadow: 
+    0 5px 0 #030712,
+    0 10px 18px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+}
+.btn-3d-google:hover {
+  filter: brightness(1.15);
+  box-shadow: 
+    0 12px 0 #030712,
+    0 22px 30px rgba(0, 0, 0, 0.75),
+    0 0 20px rgba(255, 255, 255, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.55);
+}
+.btn-3d-google:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 1px 0 #030712,
+    0 4px 8px rgba(0, 0, 0, 0.7),
+    inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* 3D Transport Buttons: Waze & Uber */
+.btn-3d-waze {
+  background: linear-gradient(180deg, #33ccff 0%, #0099cc 50%, #006688 100%);
+  border: 1px solid #66ddff;
+  border-bottom: 1px solid #004455;
+  box-shadow: 
+    0 5px 0 #003344,
+    0 10px 20px rgba(0, 153, 204, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.65);
+}
+.btn-3d-waze:hover {
+  filter: brightness(1.08);
+}
+.btn-3d-waze:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #003344, 0 4px 8px rgba(0,0,0,0.6);
+}
+
+.btn-3d-uber {
+  background: linear-gradient(180deg, #2a2a2a 0%, #151515 50%, #0a0a0a 100%);
+  border: 1px solid #4a4a4a;
+  border-bottom: 1px solid #050505;
+  box-shadow: 
+    0 5px 0 #000000,
+    0 10px 18px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35);
+}
+.btn-3d-uber:hover {
+  filter: brightness(1.12);
+}
+.btn-3d-uber:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #000000, 0 4px 8px rgba(0,0,0,0.7);
+}
+
+/* 3D Map Route Button */
+.btn-3d-maps {
+  background: linear-gradient(180deg, #1d4ed8 0%, #1e40af 50%, #172554 100%);
+  border: 1px solid #3b82f6;
+  border-bottom: 1px solid #0f172a;
+  box-shadow: 
+    0 5px 0 #091326,
+    0 10px 20px rgba(29, 78, 216, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.55);
+}
+.btn-3d-maps:hover {
+  filter: brightness(1.08);
+}
+.btn-3d-maps:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #091326, 0 4px 8px rgba(0,0,0,0.6);
+}
+
+/* Copper Metallic Pipe Background & Borders */
+.copper-pipe-horizontal {
+  background: linear-gradient(
+    180deg,
+    #5c240c 0%,
+    #a8481b 15%,
+    #e87a38 35%,
+    #ffa46b 50%,
+    #d16629 65%,
+    #7d2f0d 85%,
+    #3d1406 100%
+  );
+  box-shadow: 
+    inset 0 2px 2px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.7),
+    0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.copper-fitting {
+  background: radial-gradient(circle at 40% 35%, #ffa46b 0%, #d16629 45%, #7d2f0d 75%, #3d1406 100%);
+  box-shadow: 
+    inset 0 2px 3px rgba(255, 255, 255, 0.5),
+    0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.pvc-pipe {
+  background: linear-gradient(
+    180deg,
+    #334155 0%,
+    #475569 20%,
+    #94a3b8 48%,
+    #cbd5e1 52%,
+    #64748b 70%,
+    #1e293b 95%,
+    #0f172a 100%
+  );
+  box-shadow: 
+    inset 0 2px 2px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.8),
+    0 5px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Realistic Water Drip Animation */
+@keyframes waterDripDrop {
+  0% {
+    transform: translateY(0) scaleY(1) scaleX(1);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.95;
+    transform: translateY(6px) scaleY(1.3) scaleX(0.9);
+  }
+  65% {
+    transform: translateY(54px) scaleY(1.6) scaleX(0.75);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(72px) scaleY(0.7) scaleX(1.4);
+    opacity: 0.8;
+  }
+  80% {
+    transform: translateY(75px) scaleY(0.2) scaleX(1.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(75px) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes waterRipple {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+    border-width: 2px;
+  }
+  70% {
+    opacity: 0;
+  }
+  75% {
+    transform: scale(0.3);
+    opacity: 0.9;
+    border-width: 2px;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+    border-width: 0.5px;
+  }
+}
+
+.water-drip-active {
+  animation: waterDripDrop 3.4s cubic-bezier(0.55, 0.055, 0.675, 0.19) infinite;
+}
+
+.water-ripple-active {
+  animation: waterRipple 3.4s ease-out infinite;
+}
+
+/* Realistic Electric Sparks & Arcs Animation */
+@keyframes electricSparkGlow {
+  0%, 100% {
+    opacity: 0.08;
+    filter: drop-shadow(0 0 2px rgba(96, 165, 250, 0.2));
+  }
+  18% {
+    opacity: 0.12;
+  }
+  19% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 10px rgba(147, 197, 253, 0.9)) drop-shadow(0 0 18px rgba(239, 68, 68, 0.7));
+  }
+  20% {
+    opacity: 0.15;
+  }
+  21% {
+    opacity: 1;
+    filter: drop-shadow(0 0 14px rgba(255, 255, 255, 1)) drop-shadow(0 0 22px rgba(96, 165, 250, 0.9)) drop-shadow(0 0 30px rgba(220, 38, 38, 0.8));
+  }
+  23% {
+    opacity: 0.05;
+  }
+  67% {
+    opacity: 0.06;
+  }
+  68% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 8px rgba(191, 219, 254, 0.8)) drop-shadow(0 0 14px rgba(239, 68, 68, 0.6));
+  }
+  70% {
+    opacity: 0.08;
+  }
+}
+
+.electric-arc-glow {
+  animation: electricSparkGlow 4.8s infinite;
+}
+
+/* Carbon & Diamond Steel Background Texture */
+.bg-industrial-grid {
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(20, 50, 95, 0.35) 0%, transparent 65%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 24px 24px, 24px 24px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .water-drip-active,
+  .water-ripple-active,
+  .electric-arc-glow,
+  .glossy-3d-btn:hover::after,
+  .glossy-3d-btn:active::after {
+    animation: none !important;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
